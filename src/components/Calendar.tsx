@@ -6,6 +6,7 @@ import {
   endOfMonth,
   eachDayOfInterval,
 } from "date-fns";
+import { formatDate } from "../utls/formatDate";
 
 export function Calendar() {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
@@ -46,8 +47,8 @@ function CalendarDay({day, showWeekName, selectedMonth }: CalendarDayProps) {
     return (
       <div className="day non-month-day old-month-day">
         <div className="day-header">
-          {showWeekName && <div className="week-name">Sun</div>}
-          <div className="day-number">28</div>
+          {showWeekName && <div className="week-name">{formatDate(day,{weekday:"long"})}</div>}
+          <div className="day-number">{formatDate(day, {day:"numeric"})}</div>
           <button className="add-event-btn">+</button>
         </div>
         {/* <div className="events">
