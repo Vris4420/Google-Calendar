@@ -5,8 +5,13 @@ import {
   endOfWeek,
   endOfMonth,
   eachDayOfInterval,
+  isSameMonth,
+  isBefore,
+  endOfDay,
+  isToday,
 } from "date-fns";
 import { formatDate } from "../utls/formatDate";
+import { cc } from "../utls/cc";
 
 export function Calendar() {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
@@ -45,10 +50,10 @@ type CalendarDayProps = {
 
 function CalendarDay({day, showWeekName, selectedMonth }: CalendarDayProps) {
     return (
-      <div className="day non-month-day old-month-day">
+      <div className={ cc ("day", !isSameMonth(day, selectedMonth) && "non-month-day", isBefore(endOfDay(day), new Date()) && "old-month-day")}>
         <div className="day-header">
           {showWeekName && <div className="week-name">{formatDate(day,{weekday:"long"})}</div>}
-          <div className="day-number">{formatDate(day, {day:"numeric"})}</div>
+          <div className={cc("day-number", isToday(day) && "today")}>{formatDate(day, {day:"numeric"})}</div>
           <button className="add-event-btn">+</button>
         </div>
         {/* <div className="events">
