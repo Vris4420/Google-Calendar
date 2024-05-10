@@ -3,7 +3,7 @@ import { UnionOmit } from "../utls/types";
 import { EVENT_COLORS } from "./UseEvents";
 
 
-type Event = {
+export type Event = {
   id: string;
   name: string;
   color: (typeof EVENT_COLORS)[number];
