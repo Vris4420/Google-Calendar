@@ -94,3 +94,9 @@ function CalendarDay({day, showWeekName, selectedMonth }: CalendarDayProps) {
       </div>
     );
 }
+
+function EventFormModal({onSubmit, onDelete, event, date, ...modalProps}){
+  return <Modal {...modalProps}>
+
+  </Modal>
+}
